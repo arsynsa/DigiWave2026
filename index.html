@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <center>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Petals - Toko Bunga Elegan</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #d4a373;
+            --secondary-color: #faedcd;
+            --accent-color: #ccd5ae;
+            --dark-color: #333333;
+            --light-color: #fefae0;
+            --pink-accent: #e07a5f;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #fcfbf7;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigasi */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #b08968;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b08968;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b08968;
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: #9c7553;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: #b08968;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
+        /* About Section */
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .store-info {
+            margin-top: 25px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .store-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .store-info i {
+            color: #b08968;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #b08968;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd59;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2522;
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Bisa dikembangkan dengan hamburger menu jika mau */
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigasi -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i> Bloom & Petals
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#products">Katalog Bunga</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" style="max-width: 100%; margin: 60px 0 0 0;">
+        <div class="hero-content">
+            <h1>Sampaikan Perasaanmu dengan Bunga Indah</h1>
+            <p>Menyediakan berbagai rangkaian bunga segar pilihan untuk setiap momen spesial Anda.</p>
+            <a href="#products" class="btn">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Tentang Kami (About) -->
+    <section id="about">
+        <h2 class="section-title">Tentang Toko Kami</h2>
+        <p class="section-subtitle">Mengenal lebih dekat Bloom & Petals</p>
+        
+        <div class="about-container">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80" alt="Toko Bunga">
+            </div>
+            <div class="about-text">
+                <h3>Merangkai Kebahagiaan Sejak 2023</h3>
+                <p><strong>Bloom & Petals</strong> adalah toko bunga profesional yang berdedikasi untuk menghadirkan rangkaian bunga segar berkualitas tinggi bagi Anda dan orang terkasih. Kami percaya bahwa setiap bunga membawa pesan cinta, kebahagiaan, dan ketulusan.</p>
+                <p>Kami melayani berbagai pesanan mulai dari buket wisuda, hari Valentine, ulang tahun, pernikahan, hingga karangan bunga ucapan duka cita.</p>
+                
+                <div class="store-info">
+                    <p><i class="fa-solid fa-location-dot"></i> <strong>Alamat:</strong> Jl. Melati Indah No. 45, Kota Yogyakarta</p>
+                    <p><i class="fa-solid fa-clock"></i> <strong>Jam Operasional:</strong> Senin - Minggu (08.00 - 20.00 WIB)</p>
+                    <p><i class="fa-solid fa-phone"></i> <strong>Telepon/WhatsApp:</strong> 0812-3456-7890</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Produk -->
+    <section id="products" style="background-color: #f7f5ef; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Katalog Produk Bunga</h2>
+            <p class="section-subtitle">Pilihan buket terbaik untuk momen spesial Anda</p>
+            
+            <div class="products-grid">
+                <!-- Produk 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80" alt="Rose Elegance">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">Rose Elegance Bouquet</h3>
+                            <p class="product-desc">Buket mawar merah premium pilihan segar, sangat cocok untuk hadiah anniversary atau hari romantis.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">Rp 250.000</span>
+                            <!-- Tombol WhatsApp dengan pesan otomatis -->
+                            <a href="https://wa.me/6281234567890?text=Halo%20Bloom%20&%20Petals,%20saya%20tertarik%20untuk%20memesan%20produk%20Rose%20Elegance%20Bouquet." target="_blank" class="btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Sunburst Sunflower">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">Sunburst Sunflower</h3>
+                            <p class="product-desc">Buket bunga matahari ceria yang memancarkan energi positif, ideal untuk kado wisuda atau ulang tahun.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">Rp 200.000</span>
+                            <a href="https://wa.me/6281234567890?text=Halo%20Bloom%20&%20Petals,%20saya%20tertarik%20untuk%20memesan%20produk%20Sunburst%20Sunflower." target="_blank" class="btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1572454552913-3a1f1db9e7e3?auto=format&fit=crop&w=600&q=80" alt="Pastel Lily Dream">
+                    </div>
+                    <div class="product-info">
+                        <div>
+                            <h3 class="product-title">Pastel Lily Dream</h3>
+                            <p class="product-desc">Kombinasi bunga lily putih dan bunga pastel lembut dengan aroma harum yang menenangkan.</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">Rp 300.000</span>
+                            <a href="https://wa.me/6281234567890?text=Halo%20Bloom%20&%20Petals,%20saya%20tertarik%20untuk%20memesan%20produk%20Pastel%20Lily%20Dream." target="_blank" class="btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bloom & Petals. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
